@@ -9,6 +9,8 @@ export default function Home() {
   const [loading, setLoading] = React.useState(true);
   const [showVideo, setShowVideo] = React.useState(false);
   const videoRef = React.useRef<HTMLVideoElement>(null);
+  const [showHabitVideo, setShowHabitVideo] = React.useState(false);
+  const habitVideoRef = React.useRef<HTMLVideoElement>(null);
 
   React.useEffect(() => {
     const timer = setTimeout(() => {
@@ -144,6 +146,24 @@ export default function Home() {
           </div>
         )}
 
+        {showHabitVideo && (
+          <div className="video-overlay" onClick={() => { setShowHabitVideo(false); if (habitVideoRef.current) habitVideoRef.current.pause(); }}>
+            <div className="video-modal" onClick={(e) => e.stopPropagation()}>
+              <button className="video-close-btn" onClick={() => { setShowHabitVideo(false); if (habitVideoRef.current) habitVideoRef.current.pause(); }}>
+                <X size={24} />
+              </button>
+              <video
+                ref={habitVideoRef}
+                src="/demohabit.mp4"
+                controls
+                autoPlay
+                className="demo-video"
+                playsInline
+              />
+            </div>
+          </div>
+        )}
+
         <section>
           <h2 className="section-title">
             <Smartphone color="#0ea5e9" /> Step 2: Opt-in to Apps
@@ -185,13 +205,19 @@ export default function Home() {
               </div>
               
               <div className="special-notice">
-                <p><strong>Paid App Notice:</strong></p>
-                <p>This is a paid app. Please direct message me on WhatsApp with your email to be added as a designated tester. You can then use a Google Test Card to download it for free.</p>
-                <p style={{ marginTop: '0.5rem' }}><strong>WhatsApp:</strong> +91 {whatsappNumber}</p>
+                <p><strong>Special Instruction:</strong></p>
+                <p>Watch the video below to learn how to download the app.</p>
+                <p style={{ marginTop: '0.5rem' }}><strong>Note:</strong> It will show a price, but it is <strong>free</strong> for you! Just choose the "Google Play Test Card" when you get the app.</p>
               </div>
-              <a href={`https://wa.me/91${whatsappNumber}?text=Hi, I want to test Habit Builder. My email is: `} target="_blank" rel="noreferrer" className="btn-secondary" style={{ marginTop: '1rem', width: '100%' }}>
-                Message on WhatsApp
-              </a>
+              <button 
+                className="btn-watch-demo" 
+                style={{ marginTop: '1rem', width: '100%', justifyContent: 'center' }}
+                onClick={() => setShowHabitVideo(true)}
+              >
+                <span className="btn-watch-pulse" />
+                <Play size={20} fill="#fff" color="#fff" />
+                <span>Watch Instruction Video</span>
+              </button>
               <a href="https://play.google.com/apps/testing/com.tanay.habit_builder" target="_blank" rel="noreferrer" className="playstore-button" style={{ marginTop: '0.5rem' }}>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="playstore-icon" viewBox="0 0 512 512">
                   <path d="M99.617 8.057a50.191 50.191 0 00-38.815-6.713l230.932 230.933 74.846-74.846L99.617 8.057zM32.139 20.116c-6.441 8.563-10.148 19.077-10.148 30.199v411.358c0 11.123 3.708 21.636 10.148 30.199l235.877-235.877L32.139 20.116zM464.261 212.087l-67.266-37.637-81.544 81.544 81.548 81.548 67.273-37.64c16.117-9.03 25.738-25.442 25.738-43.908s-9.621-34.877-25.749-43.907zM291.733 279.711L60.815 510.629c3.786.891 7.639 1.371 11.492 1.371a50.275 50.275 0 0027.31-8.07l266.965-149.372-74.849-74.847z" />
