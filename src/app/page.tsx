@@ -3,10 +3,12 @@
 import React from 'react';
 import QRCode from "react-qr-code";
 // @ts-ignore
-import { CheckCircle, Smartphone, ExternalLink, ShieldCheck, Heart } from "lucide-react";
+import { CheckCircle, Smartphone, ExternalLink, ShieldCheck, Heart, Play, X, Download } from "lucide-react";
 
 export default function Home() {
   const [loading, setLoading] = React.useState(true);
+  const [showVideo, setShowVideo] = React.useState(false);
+  const videoRef = React.useRef<HTMLVideoElement>(null);
 
   React.useEffect(() => {
     const timer = setTimeout(() => {
@@ -101,6 +103,46 @@ export default function Home() {
             Important: After joining the group, please come back to this site to select any one or more apps to install from Step 2!
           </div>
         </section>
+
+        <section className="guide-section">
+          <div className="guide-card">
+            <div className="guide-content">
+              <div className="guide-icon-wrapper">
+                <Download size={28} color="#fff" />
+              </div>
+              <div className="guide-text">
+                <h2>Not sure how to download?</h2>
+                <p>Watch our quick video guide to learn how to join the testing program and install the apps on your device.</p>
+              </div>
+            </div>
+            <button
+              className="btn-watch-demo"
+              onClick={() => setShowVideo(true)}
+            >
+              <span className="btn-watch-pulse" />
+              <Play size={20} fill="#fff" color="#fff" />
+              <span>Watch Demo</span>
+            </button>
+          </div>
+        </section>
+
+        {showVideo && (
+          <div className="video-overlay" onClick={() => { setShowVideo(false); if (videoRef.current) videoRef.current.pause(); }}>
+            <div className="video-modal" onClick={(e) => e.stopPropagation()}>
+              <button className="video-close-btn" onClick={() => { setShowVideo(false); if (videoRef.current) videoRef.current.pause(); }}>
+                <X size={24} />
+              </button>
+              <video
+                ref={videoRef}
+                src="/demo.mp4"
+                controls
+                autoPlay
+                className="demo-video"
+                playsInline
+              />
+            </div>
+          </div>
+        )}
 
         <section>
           <h2 className="section-title">
