@@ -1,4 +1,37 @@
+"use client";
+
+import React from 'react';
+import QRCode from "react-qr-code";
+// @ts-ignore
+import { CheckCircle, Smartphone, ExternalLink, ShieldCheck, Heart } from "lucide-react";
+
 export default function Home() {
+  const [loading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="loader-container">
+        <div className="loader">
+          <span><span /><span /><span /><span /></span>
+          <div className="base">
+            <span />
+            <div className="face" />
+          </div>
+        </div>
+        <div className="longfazers">
+          <span /><span /><span /><span />
+        </div>
+      </div>
+    );
+  }
+
   const groupEmail = "apptestersappstanay@googlegroups.com";
   const groupUrl = "https://groups.google.com/g/apptestersappstanay";
   const whatsappNumber = "8810686931";
@@ -40,51 +73,96 @@ export default function Home() {
     <>
       <main className="container">
         <header>
+          <div className="trust-banner">
+            <ShieldCheck size={24} />
+            <span>Official Google Play Store App Testing Program</span>
+          </div>
+          
           <h1>App Testers Hub</h1>
           <p className="subtitle">
-            Welcome to the Android App Beta Testing portal. Join our Google Group to get exclusive early access to upcoming apps and help us improve them.
+            Welcome to our Android App Beta Testing portal. Get exclusive early access to our upcoming apps and help us shape their future!
           </p>
+          
+          <div className="thank-you" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
+            <Heart size={20} color="#f43f5e" fill="#f43f5e" />
+            <span>Thank you so much for volunteering your time to test our apps!</span>
+            <Heart size={20} color="#f43f5e" fill="#f43f5e" />
+          </div>
         </header>
 
         <section className="step-card">
-          <h2>Step 1: Join the Google Group</h2>
+          <h2><CheckCircle color="#34d399" /> Step 1: Join the Google Group</h2>
           <p>
-            You MUST join our Google Group with your Google Play Store email before you can opt-in to test the apps below.
+            You MUST join our Google Group using your Google Play Store email before you can opt-in to test the apps below.
           </p>
-          <a href={groupUrl} target="_blank" rel="noreferrer" className="btn-primary">
-            Join Google Group
+          <a href={groupUrl} target="_blank" rel="noreferrer" className="btn-join">
+            Join Google Group <ExternalLink size={18} />
           </a>
           <p style={{ marginTop: '1rem', fontSize: '0.9rem' }}>
             Group Email: <strong>{groupEmail}</strong>
           </p>
+          
+          <div className="highlight-text">
+            Important: After joining the group, please come back to this site to select any one or more apps to install from Step 2!
+          </div>
         </section>
 
         <section>
-          <h2 style={{ textAlign: "center", marginBottom: "2rem", fontSize: "2rem" }}>Step 2: Opt-in to Apps</h2>
+          <h2 className="section-title">
+            <Smartphone color="#0ea5e9" /> Step 2: Opt-in to Apps
+          </h2>
           <div className="apps-grid">
             {apps.map((app) => (
               <div key={app.id} className="app-card">
-                <h3>{app.name}</h3>
-                <p>{app.description}</p>
-                <a href={app.url} target="_blank" rel="noreferrer" className="btn-primary" style={{ textAlign: 'center' }}>
-                  Opt-in as Tester
+                <div className="app-card-header">
+                  <div className="app-card-content">
+                    <h3>{app.name}</h3>
+                    <p>{app.description}</p>
+                  </div>
+                  <div className="qr-container">
+                    <QRCode value={app.url} size={80} style={{ height: "auto", maxWidth: "100%", width: "100%" }} />
+                  </div>
+                </div>
+                <a href={app.url} target="_blank" rel="noreferrer" className="playstore-button" style={{ marginTop: 'auto' }}>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="playstore-icon" viewBox="0 0 512 512">
+                    <path d="M99.617 8.057a50.191 50.191 0 00-38.815-6.713l230.932 230.933 74.846-74.846L99.617 8.057zM32.139 20.116c-6.441 8.563-10.148 19.077-10.148 30.199v411.358c0 11.123 3.708 21.636 10.148 30.199l235.877-235.877L32.139 20.116zM464.261 212.087l-67.266-37.637-81.544 81.544 81.548 81.548 67.273-37.64c16.117-9.03 25.738-25.442 25.738-43.908s-9.621-34.877-25.749-43.907zM291.733 279.711L60.815 510.629c3.786.891 7.639 1.371 11.492 1.371a50.275 50.275 0 0027.31-8.07l266.965-149.372-74.849-74.847z" />
+                  </svg>
+                  <span className="playstore-texts">
+                    <span className="playstore-text-1">GET IT ON</span>
+                    <span className="playstore-text-2">Google Play</span>
+                  </span>
                 </a>
               </div>
             ))}
             
+            {/* Premium App Section */}
             <div className="app-card" style={{ borderColor: '#f59e0b' }}>
-              <h3>Habit Builder</h3>
-              <p>Special premium app testing. Requires additional steps to download.</p>
+              <div className="app-card-header">
+                <div className="app-card-content">
+                  <h3>Habit Builder</h3>
+                  <p>Special premium app testing. Requires additional steps to download.</p>
+                </div>
+                <div className="qr-container">
+                  <QRCode value="https://play.google.com/apps/testing/com.tanay.habit_builder" size={80} style={{ height: "auto", maxWidth: "100%", width: "100%" }} />
+                </div>
+              </div>
+              
               <div className="special-notice">
                 <p><strong>Paid App Notice:</strong></p>
                 <p>This is a paid app. Please direct message me on WhatsApp with your email to be added as a designated tester. You can then use a Google Test Card to download it for free.</p>
                 <p style={{ marginTop: '0.5rem' }}><strong>WhatsApp:</strong> +91 {whatsappNumber}</p>
               </div>
-              <a href={`https://wa.me/91${whatsappNumber}?text=Hi, I want to test Habit Builder. My email is: `} target="_blank" rel="noreferrer" className="btn-secondary" style={{ marginTop: '1rem' }}>
+              <a href={`https://wa.me/91${whatsappNumber}?text=Hi, I want to test Habit Builder. My email is: `} target="_blank" rel="noreferrer" className="btn-secondary" style={{ marginTop: '1rem', width: '100%' }}>
                 Message on WhatsApp
               </a>
-              <a href="https://play.google.com/apps/testing/com.tanay.habit_builder" target="_blank" rel="noreferrer" className="btn-secondary" style={{ marginTop: '0.5rem' }}>
-                View on Play Store
+              <a href="https://play.google.com/apps/testing/com.tanay.habit_builder" target="_blank" rel="noreferrer" className="playstore-button" style={{ marginTop: '0.5rem' }}>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" className="playstore-icon" viewBox="0 0 512 512">
+                  <path d="M99.617 8.057a50.191 50.191 0 00-38.815-6.713l230.932 230.933 74.846-74.846L99.617 8.057zM32.139 20.116c-6.441 8.563-10.148 19.077-10.148 30.199v411.358c0 11.123 3.708 21.636 10.148 30.199l235.877-235.877L32.139 20.116zM464.261 212.087l-67.266-37.637-81.544 81.544 81.548 81.548 67.273-37.64c16.117-9.03 25.738-25.442 25.738-43.908s-9.621-34.877-25.749-43.907zM291.733 279.711L60.815 510.629c3.786.891 7.639 1.371 11.492 1.371a50.275 50.275 0 0027.31-8.07l266.965-149.372-74.849-74.847z" />
+                </svg>
+                <span className="playstore-texts">
+                  <span className="playstore-text-1">GET IT ON</span>
+                  <span className="playstore-text-2">Google Play</span>
+                </span>
               </a>
             </div>
           </div>
