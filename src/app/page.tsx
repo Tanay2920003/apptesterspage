@@ -65,12 +65,6 @@ export default function Home() {
       url: "https://play.google.com/apps/testing/com.samapplock.applock",
       description: "App tester opt-in for Sam AppLock.",
     },
-    {
-      name: "Attendance Pro",
-      id: "com.tanay.attendancepro",
-      url: "https://play.google.com/apps/testing/com.tanay.attendancepro",
-      description: "App tester opt-in for Attendance Pro.",
-    },
   ];
 
   return (
