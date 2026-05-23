@@ -48,10 +48,10 @@ export default function Home() {
       description: "App tester opt-in for Wristguard.",
     },
     {
-      name: "Echo One Tango Todo",
+      name: "Sleek TODO - Echo One Tango Todo",
       id: "com.echoonetango.todo",
       url: "https://play.google.com/apps/testing/com.echoonetango.todo",
-      description: "App tester opt-in for Echo One Tango Todo.",
+      description: "App tester opt-in for Sleek TODO - Echo One Tango Todo.",
     },
     {
       name: "QR Generator",
@@ -91,6 +91,11 @@ export default function Home() {
           <a href={groupUrl} target="_blank" rel="noreferrer" className="btn-join">
             Join Google Group <ExternalLink size={18} />
           </a>
+          <div style={{ marginTop: '1.25rem' }}>
+            <span className="pill-note">
+              NOTE: use same gmail for join and playstore
+            </span>
+          </div>
           <p style={{ marginTop: '1rem', fontSize: '0.9rem', wordBreak: 'break-all' }}>
             Group Email: <strong>{groupEmail}</strong>
           </p>
@@ -222,6 +227,16 @@ export default function Home() {
                 </span>
               </a>
             </div>
+          </div>
+        </section>
+
+        <section className="faq-section">
+          <h2>FAQ</h2>
+          <div className="faq-card">
+            <h3>Not able to download or seeing "App not available"?</h3>
+            <p>
+              This means you either did not join the Google Group in Step 1, or the Gmail account you are using on the Google Play Store is different from the one you used to join the group.
+            </p>
           </div>
         </section>
       </main>

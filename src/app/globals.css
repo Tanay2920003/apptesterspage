@@ -189,20 +189,35 @@ h1 {
   font-weight: 800;
 }
 
+.app-card:nth-child(1) { --card-dark: #b33939; --card-bright: #ff5252; --card-shadow: #8c2610; }
+.app-card:nth-child(2) { --card-dark: #227093; --card-bright: #34ace0; --card-shadow: #18526a; }
+.app-card:nth-child(3) { --card-dark: #474787; --card-bright: #706fd3; --card-shadow: #2b2b52; }
+.app-card:nth-child(4) { --card-dark: #218c74; --card-bright: #33d9b2; --card-shadow: #145647; }
+.app-card:nth-child(5) { --card-dark: #cd6133; --card-bright: #ff793f; --card-shadow: #a24b27; }
+
 .app-card {
-  background: rgb(223, 225, 235);
-  border-radius: 50px;
-  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  position: relative;
+  background: linear-gradient(to bottom, var(--card-dark), var(--card-bright));
+  border-radius: 1.5rem;
   padding: 2.5rem;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   display: flex;
   flex-direction: column;
+  box-shadow: 
+    0 15px 35px -5px var(--card-shadow), 
+    inset 0 4px 4px rgba(255,255,255,0.3), 
+    inset 0 -8px 0 rgba(0,0,0,0.15);
+  border: 2px solid rgba(255,255,255,0.2);
+  overflow: hidden;
+  color: white;
 }
 
 .app-card:hover {
-  transform: translateY(-5px);
-  /* slightly enhance outer shadow on hover without removing inset shadow */
-  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.15) 0px 15px 30px;
+  transform: translateY(-8px);
+  box-shadow: 
+    0 25px 45px -5px var(--card-shadow),
+    inset 0 4px 4px rgba(255,255,255,0.5),
+    inset 0 -8px 0 rgba(0,0,0,0.2);
 }
 
 .app-card-header {
@@ -210,6 +225,8 @@ h1 {
   align-items: flex-start;
   justify-content: space-between;
   margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
 }
 
 .app-card-content {
@@ -219,14 +236,18 @@ h1 {
 }
 
 .app-card h3 {
-  font-size: 1.4rem;
-  color: #0f172a;
+  font-size: 1.5rem;
+  color: #ffffff;
+  font-weight: 800;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 .app-card p {
-  color: #334155;
+  color: rgba(255, 255, 255, 0.9);
   margin-bottom: 1.5rem;
   flex-grow: 1;
+  font-weight: 500;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
 .qr-container {
@@ -266,11 +287,21 @@ h1 {
 .special-notice {
   margin-top: 1rem;
   padding: 1rem;
-  background: rgba(245, 158, 11, 0.15);
-  border-left: 4px solid #f59e0b;
+  background: rgba(255, 255, 255, 0.95);
+  border-left: 4px solid #cd6133; /* Dark Orange */
   border-radius: 0.25rem;
   font-size: 0.9rem;
-  color: #92400e;
+  color: #b33939;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.special-notice p {
+  color: #b33939;
+  text-shadow: none;
+  margin-bottom: 0;
+  font-weight: 500;
 }
 
 @keyframes fadeInDown {
@@ -310,8 +341,8 @@ footer {
   justify-content: center;
   gap: 0.5rem;
   text-decoration: none;
-  background-color: white;
-  color: black;
+  background-color: #ef4444;
+  color: white;
   border-radius: 10em;
   font-size: 17px;
   font-weight: 600;
@@ -330,6 +361,20 @@ footer {
 .btn-join:active {
   transform: translateY(2px) translateX(1px);
   box-shadow: 0 0 0 0 black;
+}
+
+.pill-note {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fef08a;
+  color: #854d0e;
+  border-radius: 10em;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 0.5em 1.25em;
+  border: 1px solid black;
+  box-shadow: 2px 2px 0 0 black;
 }
 
 .playstore-button {
@@ -798,6 +843,47 @@ footer {
 }
 
 /* Mobile Responsiveness */
+
+/* FAQ Section */
+.faq-section {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  animation: fadeInUp 0.8s ease-out 0.7s both;
+}
+
+.faq-section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  color: #0f172a;
+  text-align: center;
+  font-weight: 800;
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5);
+}
+
+.faq-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  color: #0f172a;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-card h3 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+}
+
+.faq-card p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  font-weight: 500;
+}
 @media (max-width: 768px) {
   body {
     overflow-x: hidden;
