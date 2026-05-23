@@ -73,17 +73,12 @@ export default function Home() {
     <>
       <main className="container">
         <header>
-          <div className="trust-banner">
-            <ShieldCheck size={24} />
-            <span>Official Google Play Store App Testing Program</span>
-          </div>
-          
           <h1>App Testers Hub</h1>
           <p className="subtitle">
             Welcome to our Android App Beta Testing portal. Get exclusive early access to our upcoming apps and help us shape their future!
           </p>
           
-          <div className="thank-you" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
+          <div className="thank-you">
             <Heart size={20} color="#f43f5e" fill="#f43f5e" />
             <span>Thank you so much for volunteering your time to test our apps!</span>
             <Heart size={20} color="#f43f5e" fill="#f43f5e" />
@@ -98,7 +93,7 @@ export default function Home() {
           <a href={groupUrl} target="_blank" rel="noreferrer" className="btn-join">
             Join Google Group <ExternalLink size={18} />
           </a>
-          <p style={{ marginTop: '1rem', fontSize: '0.9rem' }}>
+          <p style={{ marginTop: '1rem', fontSize: '0.9rem', wordBreak: 'break-all' }}>
             Group Email: <strong>{groupEmail}</strong>
           </p>
           
