@@ -1,65 +1,98 @@
-import Image from "next/image";
-
 export default function Home() {
+  const groupEmail = "apptestersappstanay@googlegroups.com";
+  const groupUrl = "https://groups.google.com/g/apptestersappstanay";
+  const whatsappNumber = "8810686931";
+  
+  const apps = [
+    {
+      name: "Wristguard",
+      id: "com.wristguard.app",
+      url: "https://play.google.com/apps/testing/com.wristguard.app",
+      description: "App tester opt-in for Wristguard.",
+    },
+    {
+      name: "Echo One Tango Todo",
+      id: "com.echoonetango.todo",
+      url: "https://play.google.com/apps/testing/com.echoonetango.todo",
+      description: "App tester opt-in for Echo One Tango Todo.",
+    },
+    {
+      name: "QR Generator",
+      id: "com.tanay.qr_generator_app",
+      url: "https://play.google.com/apps/testing/com.tanay.qr_generator_app",
+      description: "App tester opt-in for QR Generator.",
+    },
+    {
+      name: "Sam AppLock",
+      id: "com.samapplock.applock",
+      url: "https://play.google.com/apps/testing/com.samapplock.applock",
+      description: "App tester opt-in for Sam AppLock.",
+    },
+    {
+      name: "Attendance Pro",
+      id: "com.tanay.attendancepro",
+      url: "https://play.google.com/apps/testing/com.tanay.attendancepro",
+      description: "App tester opt-in for Attendance Pro.",
+    },
+  ];
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <>
+      <main className="container">
+        <header>
+          <h1>App Testers Hub</h1>
+          <p className="subtitle">
+            Welcome to the Android App Beta Testing portal. Join our Google Group to get exclusive early access to upcoming apps and help us improve them.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
+        </header>
+
+        <section className="step-card">
+          <h2>Step 1: Join the Google Group</h2>
+          <p>
+            You MUST join our Google Group with your Google Play Store email before you can opt-in to test the apps below.
+          </p>
+          <a href={groupUrl} target="_blank" rel="noreferrer" className="btn-primary">
+            Join Google Group
           </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+          <p style={{ marginTop: '1rem', fontSize: '0.9rem' }}>
+            Group Email: <strong>{groupEmail}</strong>
+          </p>
+        </section>
+
+        <section>
+          <h2 style={{ textAlign: "center", marginBottom: "2rem", fontSize: "2rem" }}>Step 2: Opt-in to Apps</h2>
+          <div className="apps-grid">
+            {apps.map((app) => (
+              <div key={app.id} className="app-card">
+                <h3>{app.name}</h3>
+                <p>{app.description}</p>
+                <a href={app.url} target="_blank" rel="noreferrer" className="btn-primary" style={{ textAlign: 'center' }}>
+                  Opt-in as Tester
+                </a>
+              </div>
+            ))}
+            
+            <div className="app-card" style={{ borderColor: '#f59e0b' }}>
+              <h3>Habit Builder</h3>
+              <p>Special premium app testing. Requires additional steps to download.</p>
+              <div className="special-notice">
+                <p><strong>Paid App Notice:</strong></p>
+                <p>This is a paid app. Please direct message me on WhatsApp with your email to be added as a designated tester. You can then use a Google Test Card to download it for free.</p>
+                <p style={{ marginTop: '0.5rem' }}><strong>WhatsApp:</strong> +91 {whatsappNumber}</p>
+              </div>
+              <a href={`https://wa.me/91${whatsappNumber}?text=Hi, I want to test Habit Builder. My email is: `} target="_blank" rel="noreferrer" className="btn-secondary" style={{ marginTop: '1rem' }}>
+                Message on WhatsApp
+              </a>
+              <a href="https://play.google.com/apps/testing/com.tanay.habit_builder" target="_blank" rel="noreferrer" className="btn-secondary" style={{ marginTop: '0.5rem' }}>
+                View on Play Store
+              </a>
+            </div>
+          </div>
+        </section>
       </main>
-    </div>
+      <footer>
+        <p>&copy; {new Date().getFullYear()} Android App Testers. All rights reserved.</p>
+      </footer>
+    </>
   );
 }
