@@ -92,6 +92,18 @@ export default function Home() {
       url: "https://play.google.com/apps/testing/com.samapplock.applock",
       description: "App tester opt-in for Sam AppLock. Secure your private apps and data with advanced biometric lock.",
     },
+    {
+      name: "HomeTank APP",
+      id: "com.echoonetango.tanksync",
+      url: "https://play.google.com/apps/internaltest/4701524268685627155",
+      description: "App tester opt-in for HomeTank APP. Track your water usage and manage your tank efficiently.",
+    },
+    {
+      name: "MedRemind",
+      id: "com.medremind.med_remind",
+      url: "https://play.google.com/apps/internaltest/4701635453997996320",
+      description: "App tester opt-in for MedRemind. Never miss a dose with our smart medication reminder.",
+    },
   ];
 
   return (
