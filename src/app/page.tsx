@@ -87,10 +87,10 @@ export default function Home() {
       description: "App tester opt-in for Wristguard. Protect your wrist health with our smart tracking utility.",
     },
     {
-      name: "Sam AppLock",
-      id: "com.samapplock.applock",
-      url: "https://play.google.com/apps/testing/com.samapplock.applock",
-      description: "App tester opt-in for Sam AppLock. Secure your private apps and data with advanced biometric lock.",
+      name: "Boltbase",
+      id: "com.boltbase.boltbase",
+      url: "https://play.google.com/apps/testing/com.boltbase.boltbase",
+      description: "App tester opt-in for Boltbase. Join early access testing for Boltbase.",
     },
     {
       name: "HomeTank APP",
@@ -407,7 +407,7 @@ export default function Home() {
                 </label>
                 <label>
                   <span>Which App?</span>
-                  <input type="text" name="app" placeholder="Wristguard or Sam AppLock" />
+                  <input type="text" name="app" placeholder="Wristguard or Boltbase" />
                 </label>
               </div>
 
