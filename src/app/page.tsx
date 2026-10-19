@@ -101,7 +101,7 @@ export default function Home() {
     {
       name: "MedRemind",
       id: "com.medremind.med_remind",
-      url: "https://play.google.com/apps/internaltest/4701635453997996320",
+      url: "https://play.google.com/apps/testing/com.medremind.med_remind",
       description: "App tester opt-in for MedRemind. Never miss a dose with our smart medication reminder.",
     },
   ];
