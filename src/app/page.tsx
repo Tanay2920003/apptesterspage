@@ -102,6 +102,12 @@ export default function Home() {
           <a href="#steps" className="btn btn-primary">
             Get started
           </a>
+
+          <div className="hero-media" aria-hidden="true">
+            <video src="/hero-dev.mp4" autoPlay muted loop playsInline />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/hero-test.gif" alt="" />
+          </div>
         </header>
 
         <section className="section" id="video">

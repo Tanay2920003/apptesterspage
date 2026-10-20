@@ -110,6 +110,24 @@ strong {
   margin: 16px auto 32px;
 }
 
+.hero-media {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 56px;
+}
+
+.hero-media video,
+.hero-media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: var(--radius);
+  background: var(--fill);
+  pointer-events: none;
+}
+
 .section {
   padding: 56px 0;
 }
