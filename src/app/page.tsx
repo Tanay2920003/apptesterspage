@@ -28,7 +28,7 @@ const apps = [
   {
     name: "HomeTank",
     id: "com.echoonetango.tanksync",
-    url: "https://play.google.com/apps/internaltest/4701524268685627155",
+    url: "https://play.google.com/apps/testing/com.echoonetango.tanksync",
     description: "Open-source project. Track your water usage and manage your tank efficiently.",
   },
   {
