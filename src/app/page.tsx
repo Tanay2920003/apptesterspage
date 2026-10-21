@@ -15,6 +15,7 @@ const videos = [
 const apps = [
   {
     name: "Wristguard",
+    hidden: true,
     id: "com.wristguard.app",
     url: "https://play.google.com/apps/testing/com.wristguard.app",
     description: "Lock and track your phone using your Wear OS watch.",
@@ -27,12 +28,14 @@ const apps = [
   },
   {
     name: "HomeTank",
+    hidden: true,
     id: "com.echoonetango.tanksync",
     url: "https://play.google.com/apps/testing/com.echoonetango.tanksync",
     description: "Open-source project. Track your water usage and manage your tank efficiently.",
   },
   {
     name: "MedRemind",
+    hidden: true,
     id: "com.medremind.med_remind",
     url: "https://play.google.com/apps/testing/com.medremind.med_remind",
     description: "Never miss a dose with a smart medication reminder.",
@@ -201,7 +204,7 @@ export default function Home() {
               )}
 
               <div className="apps">
-                {apps.map((app, i) => (
+                {apps.filter((app) => !app.hidden).map((app, i) => (
                   <div key={app.id} className="app">
                     <div className="app-info">
                       <span className="app-no">App {i + 1}</span>
